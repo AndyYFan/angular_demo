@@ -1,0 +1,94 @@
+[
+    {
+        "fileName": "case2.xlsx",
+        "filePath": "/Users/fanyunyi/IdeaProjects/ExcelParser/target/ExcelParser/WEB-INF/classes/upload/20170225223934case2.xlsx",
+        "columnList": [
+            {
+                "index": 0,
+                "cells": [
+                    "field1"
+                ]
+            },
+            {
+                "index": 1,
+                "cells": [
+                    "field2"
+                ]
+            },
+            {
+                "index": 2,
+                "cells": [
+                    "field3"
+                ]
+            },
+            {
+                "index": 3,
+                "cells": [
+                    "field4"
+                ]
+            }
+        ]
+    },
+    {
+        "fileName": "test1.xlsx",
+        "filePath": "/Users/fanyunyi/IdeaProjects/ExcelParser/target/ExcelParser/WEB-INF/classes/upload/20170225223935test1.xlsx",
+        "columnList": [
+            {
+                "index": 0,
+                "cells": [
+                    "name",
+                    "mm"
+                ]
+            },
+            {
+                "index": 1,
+                "cells": [
+                    "password",
+                    "tt"
+                ]
+            }
+        ]
+    },
+    {
+        "fileName": "case1.xlsx",
+        "filePath": "/Users/fanyunyi/IdeaProjects/ExcelParser/target/ExcelParser/WEB-INF/classes/upload/20170225223935case1.xlsx",
+        "columnList": [
+            {
+                "index": 0,
+                "cells": [
+                    "姓名",
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            {
+                "index": 1,
+                "cells": [
+                    "地址",
+                    "AA",
+                    "BB",
+                    ""
+                ]
+            },
+            {
+                "index": 2,
+                "cells": [
+                    "年龄",
+                    "15",
+                    "16",
+                    "17"
+                ]
+            },
+            {
+                "index": 3,
+                "cells": [
+                    "性别",
+                    "m",
+                    "fm",
+                    "m"
+                ]
+            }
+        ]
+    }
+]

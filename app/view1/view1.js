@@ -22,6 +22,12 @@ function ControllerController($scope, $http) {
     $scope.files = data;
     console.log(data);
     $scope.filelist = getFileList($scope.files);   // filelist{ file}
+  //    $scope.rows =  new Array();
+  //    for(var i = 0; i<$scope.files.length;i++){
+  //      $scope.rows.push(renderColumns(data[2]));
+  //    }
+     
+  // console.log($scope.rows);
   });
 
   activate();
@@ -91,7 +97,30 @@ function ControllerController($scope, $http) {
 
  $scope.showExcel = function(file){
     $scope.fileToShow = findFileByPath($scope.files,file.filepath);
+   $scope.rows = renderColumns($scope.fileToShow);
   };
 
+
+//将列信息转换为行信息
+   var renderColumns = function(file){
+     if(typeof file == 'undefined'){
+       return;
+     }
+    var columns = file.columnList;
+    var columnNum = columns.length;
+    var column0 = columns[0].cells;
+    var rowNum = column0.length;
+
+    var rows = new Array(rowNum);
+    for(var i = 0; i< rowNum; i++){
+       rows[i] = new Array();
+       for(var j = 0;j<columnNum;j++){
+         rows[i][j] = columns[j].cells[i];
+       }
+    }
+   return rows;
+  } 
+
+//
   
 }

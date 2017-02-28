@@ -1,7 +1,54 @@
-  <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+<nav navbar-default>
     <div class="row">
-      <div class="col-md-12">
-        <h2 class="page-header text-center">ExcelParser</h2>
-      </div>
+        <div class="col-md-12 text-center ">Excel Parser</div>
     </div>
-  </nav>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default" ng-class="{hidden: vm.hidden}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="glyphicon glyphicon-th-list"></span> 已上传文件
+                        <span class="pull-right">
+      <span class="glyphicon" ng-class="vm.collapsed?'glyphicon-chevron-down':'glyphicon-chevron-up'"
+            ng-click="vm.collapsed = !vm.collapsed"></span> &nbsp;
+                        <!--<span class="glyphicon glyphicon-remove" ng-click="vm.hidden = true"></span>-->
+                        </span>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" ng-class="{in: !vm.collapsed}">
+                    <div class="panel-body">
+                        <ul>
+                         <a class = "glyphicon glyphicon-file" ng-repeat="file in filelist" ng-click="showExcel(file)" >{{file.fileName}}</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary glyphicon glyphicon-upload" >上传文件</button>
+        </div>
+        <div class="col-md-9">
+            <div class="bootstrap">
+                <div class="fixed-table-toolbar"></div>
+                <div class="fixed-table-container">
+                    <div class="fixed-table-header" style="display: none;">
+                        <table></table>
+                    </div>
+                    <table class="table table-bordered">
+
+                        <tbody>
+                            <tr ng-repeat="columns in fileToShow.columnList">
+                                <td ng-repeat="column in columns">
+                                    {{column}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

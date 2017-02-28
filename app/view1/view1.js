@@ -21,7 +21,7 @@ function ControllerController($scope, $http) {
   $http.get('../json/upload.json').success(function (data) {
     $scope.files = data;
     console.log(data);
-    var filelist = getFileList($scope.files);
+    $scope.filelist = getFileList($scope.files);   // filelist{ file}
   });
 
   activate();
@@ -35,7 +35,17 @@ function ControllerController($scope, $http) {
     this.fileName = fileName;
     this.uploadTime = uploadTime;
     this.filepath = filepath;
+    this
   }
+
+  //constructor of Column
+  function Column(columnIndex, columnName, columnContent) {
+    this.columnIndex = columnIndex;
+    this.columnName = columnName;
+    this.columnContent = columnContent;
+  }
+
+
 
   //get uploadTime by filePath
   function getDate(filepath) {
@@ -54,6 +64,9 @@ function ControllerController($scope, $http) {
   //test
   //console.log(getDate("/Users/fanyunyi/IdeaProjects/ExcelParser/target/ExcelParser/WEB-INF/classes/upload/20170225223934case2.xlsx"));
 
+  /**
+   * get FilesBrief Info  { filename, uplaodTime, filepath}
+   */
   function getFileList(files) {
     var filelist = [];
 
@@ -66,4 +79,19 @@ function ControllerController($scope, $http) {
   }
 
 
+  //find columns detail by filepath on the backend
+ function findFileByPath(dataSet,filePath){
+    for(var file of dataSet){
+      if(file.filePath == filePath){
+        return file;
+      }
+    }
+    console.log("cannot find file");
+ }
+
+ $scope.showExcel = function(file){
+    $scope.fileToShow = findFileByPath($scope.files,file.filepath);
+  };
+
+  
 }

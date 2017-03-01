@@ -11,11 +11,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="panel panel-default" ng-class="{hidden: vm.hidden}">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <span class="glyphicon glyphicon-th-list"></span> 已上传文件
+                        <span class="glyphicon glyphicon-th-list"></span> 
                         <span class="pull-right">
       <span class="glyphicon" ng-class="vm.collapsed?'glyphicon-chevron-down':'glyphicon-chevron-up'"
             ng-click="vm.collapsed = !vm.collapsed"></span> &nbsp;
@@ -25,25 +25,29 @@
                 </div>
                 <div class="panel-collapse collapse" ng-class="{in: !vm.collapsed}">
                     <div class="panel-body">
-                        <a class="glyphicon glyphicon-file" ng-repeat="file in filelist" ng-click="showExcel(file)">{{file.fileName}} {{file.uploadTime}}</a>
+                        <ul>
+                        <li class="glyphicon" ng-class = "fileToShow.fileName == file.fileName ? 'glyphicon-folder-open':'glyphicon-folder-close'" ng-repeat="file in filelist" ng-click="showExcel(file)"> <h4> {{file.fileName}}</h4></li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div>
-                <button class="btn btn-primary glyphicon glyphicon-upload">上传文件</button>
+                <button  class=" btn btn-lg glyphicon glyphicon-upload file">上传文件
+                    <input type="file" name="" id="" multiple/>
+                </button>
             </div>
 
             <br/>
 
             <div>
-                <button class="btn btn-primary glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow)">生成预览</button>
+                <button class="btn btn-lg glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow)">生成预览</button>
             </div>
 
         </div>
         <div class="col-md-1">
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="bootstrap">
                 <div class="fixed-table-toolbar"></div>
                 <div class="fixed-table-container">
@@ -54,7 +58,7 @@
                         <thead>
                             <tr>
                                 <th ng-repeat="checkbox in checkboxList"> 
-                                    <span class="glyphicon" ng-class=" checkbox.status ? 'glyphicon-ok-sign':'glyphicon-remove-circle'" ng-click = "toggleCheckbox(checkbox)"></span>
+                                    <span class="glyphicon btn-lg" ng-class=" checkbox.status ? 'glyphicon-ok-sign':'glyphicon-check'" ng-click = "toggleCheckbox(checkbox)"></span>
                                 </th>
                             </tr>
                         </thead>
@@ -91,7 +95,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default glyphicon glyphicon-remove-sign" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default glyphicon glyphicon-remove-sign" data-dismiss="modal" ng-click="showExcel(fileToShow)">关闭</button>
                     <button type="button" class="btn btn-primary glyphicon glyphicon-save"  ng-click = "download()" data-dismiss="modal">下载</button>
                 </div>
             </div>

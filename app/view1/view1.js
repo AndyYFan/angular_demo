@@ -1,6 +1,6 @@
 'use strict';
 
-var ag = angular.module('myApp.view1', ['ngRoute']);
+var ag = angular.module('myApp.view1', ['ngRoute','angularFileUpload']);
 
 ag.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/view1', {
@@ -9,26 +9,21 @@ ag.config(['$routeProvider', function ($routeProvider) {
   });
 }]);
 
-ag.controller('View1Ctrl', ['$http', '$scope']);
+ag.controller('View1Ctrl', ['$http', '$scope','FileUploader']);
 
 
 
 ag.controller('View1Ctrl', ControllerController);
 
-ControllerController.inject = ['$scope', '$http'];
-function ControllerController($scope, $http) {
+ControllerController.inject = ['$scope', '$http','FileUploader'];
+function ControllerController($scope, $http,FileUploader) {
   var vm = this;
   $http.get('../json/upload.json').success(function (data) {
     $scope.files = data;
-    console.log(data);
-    $scope.filelist = getFileList($scope.files);   // filelist{ file}
-  //    $scope.rows =  new Array();
-  //    for(var i = 0; i<$scope.files.length;i++){
-  //      $scope.rows.push(renderColumns(data[2]));
-  //    }
-     
-  // console.log($scope.rows);
+    $scope.filelist = getFileList($scope.files);  
   });
+
+  
 
   activate();
 
@@ -141,9 +136,12 @@ function columnCheckbox(index,status){
  * rendering preview data by combining selected columns
  */
 function preview(checkboxs,file){
-
-    var columns = file.columnList;
     var preview = [];
+    if(typeof file == 'undefined'){
+      return preview;
+    }
+    var columns = file.columnList;
+    
     for(var i =0 ;i < checkboxs.length;i++){
       if(checkboxs[i].status == true){
         preview.push(columns[checkboxs[i].index]);
@@ -154,8 +152,13 @@ function preview(checkboxs,file){
 }
 
 $scope.showPreview = function(indexes,file){
+  $scope.previewContent = [];
   var columns = preview(indexes,file);
-  $scope.previewContent = renderColumns(columns);
+  if(columns.length != 0){
+ 
+    $scope.previewContent = renderColumns(columns);
+  }
+  
 }
 
 /**
@@ -163,7 +166,9 @@ $scope.showPreview = function(indexes,file){
  * then get the generated excel filename
  * finally download the file by excel filename
  */
-
+$scope.download = function(){
+  $scope.checkboxList
+}
 
 
 

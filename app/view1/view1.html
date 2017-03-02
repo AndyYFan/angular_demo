@@ -4,14 +4,14 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     <div calss="row">
         <div>
             <br/>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="panel panel-default" ng-class="{hidden: vm.hidden}">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -33,19 +33,26 @@
             </div>
             <div>
                 <button  class=" btn btn-lg glyphicon glyphicon-upload file">上传文件
-                    <input type="file" name="" id="" multiple/>
+                    <input type="file" nv-file-select="" uploader="uploader" multiple />
                 </button>
+                <span class=" btn btn-lg glyphicon glyphicon-file"> {{ uploader.queue.length }}</span>
+                <div>
+                    <br/>
+                    <span class="btn btn-lg glyphicon glyphicon-cloud-upload"> </button>
+                    <span class=""> </span>
+                </div>
+                
             </div>
 
             <br/>
 
-            <div>
-                <button class="btn btn-lg glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow)">生成预览</button>
-            </div>
+            
 
         </div>
         <div class="col-md-1">
-
+            <div>
+                <button class="btn btn-lg glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow)"> </button>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="bootstrap">
@@ -58,7 +65,7 @@
                         <thead>
                             <tr>
                                 <th ng-repeat="checkbox in checkboxList"> 
-                                    <span class="glyphicon btn-lg" ng-class=" checkbox.status ? 'glyphicon-ok-sign':'glyphicon-check'" ng-click = "toggleCheckbox(checkbox)"></span>
+                                    <span class="glyphicon btn-lg" ng-class=" checkbox.status ? 'glyphicon-check':'glyphicon-unchecked'" ng-click = "toggleCheckbox(checkbox)"></span>
                                 </th>
                             </tr>
                         </thead>
@@ -95,8 +102,8 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default glyphicon glyphicon-remove-sign" data-dismiss="modal" ng-click="showExcel(fileToShow)">关闭</button>
-                    <button type="button" class="btn btn-primary glyphicon glyphicon-save"  ng-click = "download()" data-dismiss="modal">下载</button>
+                    <button type="button" class="btn btn-lg glyphicon glyphicon-eye-close" data-dismiss="modal" ng-click="showExcel(fileToShow)">关闭</button>
+                    <button type="button" class="btn btn-lg glyphicon glyphicon-download"  ng-click = "download()" data-dismiss="modal">下载</button>
                 </div>
             </div>
         </div>

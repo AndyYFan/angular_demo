@@ -23,7 +23,9 @@ function ControllerController($scope, $http,FileUploader) {
     $scope.filelist = getFileList($scope.files);  
   });
 
-  
+  var uploader = $scope.uploader = new FileUploader({
+            url: 'upload.php'
+        });
 
   activate();
 
@@ -167,7 +169,10 @@ $scope.showPreview = function(indexes,file){
  * finally download the file by excel filename
  */
 $scope.download = function(){
-  $scope.checkboxList
+  $http.post('/').success(function (data) {
+    $scope.files = data;
+    $scope.filelist = getFileList($scope.files);  
+  });
 }
 
 

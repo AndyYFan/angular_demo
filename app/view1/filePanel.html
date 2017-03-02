@@ -1,0 +1,22 @@
+  <div class="panel panel-default" ng-class="{hidden: vm.hidden}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="pull-right">
+      <span class="glyphicon" ng-class="vm.collapsed?'glyphicon-chevron-down':'glyphicon-chevron-up'"
+            ng-click="vm.collapsed = !vm.collapsed"></span> &nbsp;
+                        <!--<span class="glyphicon glyphicon-remove" ng-click="vm.hidden = true"></span>-->
+                        </span>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" ng-class="{in: !vm.collapsed}">
+                    <div class="panel-body">
+                        <ul>
+                            <li class="glyphicon" ng-class="fileToShow.fileName == file.fileName ? 'glyphicon-folder-open':'glyphicon-folder-close'"
+                                ng-repeat="file in filelist" ng-click="showExcel(file)">
+                                <h4> {{file.fileName}}</h4>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>

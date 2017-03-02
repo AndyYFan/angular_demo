@@ -168,12 +168,48 @@ $scope.showPreview = function(indexes,file){
  * then get the generated excel filename
  * finally download the file by excel filename
  */
-$scope.download = function(){
-  $http.post('/').success(function (data) {
-    $scope.files = data;
-    $scope.filelist = getFileList($scope.files);  
-  });
+function FileRenderInfo(fileName){
+  this.fileName = fileName;
+  this.clmIdxs = [];
+  this.addClmIdx = function(index){
+      this.clmIdxs.push(index);
+      console.log("add index:"+index);
+  }
+
 }
+
+$scope.renderList = [];
+
+$scope.pushRenderInfo = function(){
+  var fileRenderInfo = new FileRenderInfo($scope.fileToShow);
+  var checkboxList = $scope.checkboxList;
+  for(var i=0; i<checkboxList.length;i++){
+    if(checkboxList[i].status == true){
+      fileRenderInfo.addClmIdx(checkboxList[i].index);
+    }
+  }
+  console.log(fileRenderInfo);
+  if(fileRenderInfo.clmIdxs.length!=0){
+    $scope.renderList.push(fileRenderInfo);
+  }
+  console.log($scope.renderList);
+}
+
+$scope.clearRenderList = function(){
+  $scope.renderList = [];
+}
+
+
+
+// $scope.download = function(){
+//   renderInfo.addfileName($scope.fileToShow);
+//   renderInfo.addColumnIndexs(getActiveIndexes($scope.checkboxList));
+
+//   $http.post('/url/thisUrl',$fileToShow.fileName).success(function (data) {  //this url is just for test
+//     $scope.files = data;
+//     $scope.filelist = getFileList($scope.files);  
+//   });
+// }
 
 
 
@@ -181,7 +217,6 @@ $scope.download = function(){
  * test
  */
 
-$scope.msg = "tst";
 
   
 }

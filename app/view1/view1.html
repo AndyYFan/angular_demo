@@ -12,27 +12,7 @@
     </div>
     <div class="row">
         <div class="col-md-2">
-            <div class="panel panel-default" ng-class="{hidden: vm.hidden}">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <span class="glyphicon glyphicon-th-list"></span>
-                        <span class="pull-right">
-      <span class="glyphicon" ng-class="vm.collapsed?'glyphicon-chevron-down':'glyphicon-chevron-up'"
-            ng-click="vm.collapsed = !vm.collapsed"></span> &nbsp;
-                        <!--<span class="glyphicon glyphicon-remove" ng-click="vm.hidden = true"></span>-->
-                        </span>
-                    </h4>
-                </div>
-                <div class="panel-collapse collapse" ng-class="{in: !vm.collapsed}">
-                    <div class="panel-body">
-                        <ul>
-                            <li class="glyphicon" ng-class="fileToShow.fileName == file.fileName ? 'glyphicon-folder-open':'glyphicon-folder-close'"
-                                ng-repeat="file in filelist" ng-click="showExcel(file)">
-                                <h4> {{file.fileName}}</h4>
-                                </li>
-                        </ul>
-                    </div>
-                </div>
+            <div ng-include="'view1/filePanel.html'" ng-controller='View1Ctrl'>
             </div>
             <div>
                 <button class=" btn btn-lg glyphicon glyphicon-upload file">上传文件
@@ -55,59 +35,22 @@
             <div>
                 <button class="btn btn-lg glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow)"> </button>
             </div>
-        </div>
-        <div class="col-md-8">
-            <div class="bootstrap">
-                <div class="fixed-table-toolbar"></div>
-                <div class="fixed-table-container">
-                    <div class="fixed-table-header" style="display: none;">
-                        <table></table>
-                    </div>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th ng-repeat="checkbox in checkboxList">
-                                    <span class="glyphicon btn-lg" ng-class=" checkbox.status ? 'glyphicon-check':'glyphicon-unchecked'" ng-click="toggleCheckbox(checkbox)"></span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="row in rows track by $index">
-                                <td ng-repeat="cell in row track by $index">
-                                    {{cell}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+            <br/>
+            <div>
+                <button ng-click="isSetted=!isSetted" ng-init="isSetted = false" class="glyphicon glyphicon-cog"> </button>
+                <span ng-if="isSetted" class="btn" ng-click="isMulti = !isMulti" ng-init="isMulti = false">{{isMulti?'多文件':'单文件'}}</span>
+                <br/>
+                <button ng-if="isMulti" class="btn btn-lg" ng-click="pushRenderInfo()">{{renderList.length}}</button>
+                <br/>
+                <button ng-if="isMulti" class="btn btn-lg" ng-click="clearRenderList()">clear</button>
+                <br/>
             </div>
+        </div>
+        <div class="col-md-8" ng-include="'view1/excel.html'" ng-controller="View1Ctrl">
         </div>
 
     </div>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">生成预览</h4>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered table-hover">
-                        <tbody>
-                            <tr ng-repeat="row in previewContent">
-                                <td ng-repeat="cell in row">
-                                    {{cell}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-lg glyphicon glyphicon-eye-close" data-dismiss="modal" ng-click="showExcel(fileToShow)">关闭</button>
-                    <button type="button" class="btn btn-lg glyphicon glyphicon-download" ng-click="download()" data-dismiss="modal">下载</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <div ng-include="'view1/preview.html'" ng-controller="View1Ctrl"></div>
+
 </div>

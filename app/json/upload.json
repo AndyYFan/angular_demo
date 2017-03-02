@@ -90,5 +90,94 @@
                 ]
             }
         ]
-    }
+    },
+    {
+        "fileName": "test2.xlsx",
+        "filePath": "/Users/fanyunyi/IdeaProjects/ExcelParser/target/ExcelParser/WEB-INF/classes/upload/20170225223935test2.xlsx",
+        "columnList": [
+            {
+                "index": 0,
+                "cells": [
+                    "name",
+                    "mm",
+                    "zhang",
+                    "XU",
+                    "Wei",
+                    "HU"
+                ]
+            },
+            {
+                "index": 1,
+                "cells": [
+                    "nickname",
+                    "tt",
+                    "PWzhang",
+                    "PWXU",
+                    "PWWei",
+                    "PWHU"
+                ]
+            }
+        ]
+    },
+    {
+        "fileName": "test3.xlsx",
+        "filePath": "/Users/fanyunyi/IdeaProjects/ExcelParser/target/ExcelParser/WEB-INF/classes/upload/20170225223935test3.xlsx",
+        "columnList": [
+            {
+                "index": 0,
+                "cells": [
+                    "name",
+                    "mm",
+                    "zhang",
+                    "XU",
+                    "Wei",
+                    "HU"
+                ]
+            },
+            {
+                "index": 1,
+                "cells": [
+                    "School",
+                    "PKU",
+                    "NJU",
+                    "THU",
+                    "SJTU",
+                    "FDU"
+                ]
+            },
+            {
+                "index": 2,
+                "cells": [
+                    "GSchool",
+                    "PKU",
+                    "NJU",
+                    "THU",
+                    "SJTU",
+                    "FDU"
+                ]
+            },
+            {
+                "index": 3,
+                "cells": [
+                    "Company",
+                    "Alibaba",
+                    "Tencent",
+                    "Baidu",
+                    "Google",
+                    "Facebook"
+                ]
+            },
+            {
+                "index": 4,
+                "cells": [
+                    "Address",
+                    "room 401, XX Building，A Street",
+                    "room 401, XX Building，A Street",
+                    "room 401, XX Building，A Street",
+                    "room 401, XX Building，A Street",
+                    "room 401, XX Building，A Street"
+                ]
+            }
+        ]
+    }   
 ]

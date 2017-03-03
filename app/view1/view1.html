@@ -11,9 +11,9 @@
         </div>
     </div>
     <div class="row">
+        <!--fileList col -->
         <div class="col-md-2">
-            <div ng-include="'view1/filePanel.html'" ng-controller='View1Ctrl'>
-            </div>
+            <div ng-include="'view1/filePanel.html'"></div>
             <div>
                 <button class=" btn btn-lg glyphicon glyphicon-upload file">上传文件
                     <input type="file" nv-file-select="" uploader="uploader" multiple />
@@ -21,19 +21,15 @@
                 <span class=" btn btn-lg glyphicon glyphicon-file" ng-click="vm.buttonShow = !bm.buttonShow"> {{ uploader.queue.length }}</span>
                 <div>
                     <br/>
-                    <!--<span class="btn btn-lg glyphicon glyphicon-cloud-upload"> </button>-->
                 </div>
-
             </div>
-
             <br/>
-
-
-
         </div>
+
+        <!--operation column-->
         <div class="col-md-1">
             <div>
-                <button class="btn btn-lg glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow)"> </button>
+                <button class="btn btn-lg glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal" ng-click="showPreview(checkboxList,fileToShow.file)"> </button>
             </div>
             <br/>
             <div>
@@ -46,11 +42,15 @@
                 <br/>
             </div>
         </div>
-        <div class="col-md-8" ng-include="'view1/excel.html'" ng-controller="View1Ctrl">
-        </div>
 
+        <!--file Content-->
+        <div  ng-include ="'view1/excel.html'"></div>
+
+         
     </div>
 
-    <div ng-include="'view1/preview.html'" ng-controller="View1Ctrl"></div>
+    <!--preview column-->
+    <div ng-include="'view1/preview.html'"></div>
+  
 
 </div>

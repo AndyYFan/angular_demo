@@ -27,11 +27,10 @@ function ControllerController($scope, $http,FileUploader) {
             url: 'upload.php'
         });
 
-  activate();
-
-  ////////////////
-
-  function activate() { }
+$scope.fileToShow = {
+  file : null,
+  rows : null
+};
 
   //constructor of file object
   function File(fileName, uploadTime, filePath) {
@@ -93,8 +92,10 @@ function ControllerController($scope, $http,FileUploader) {
  }
 
  $scope.showExcel = function(file){
-    $scope.fileToShow = findFileByPath($scope.files,file.filePath);
-   $scope.rows = renderColumns($scope.fileToShow.columnList);
+    $scope.fileToShow
+      .file = findFileByPath($scope.files,file.filePath);
+    $scope.fileToShow
+      .rows = renderColumns($scope.fileToShow.file.columnList);
   };
 
 
@@ -181,7 +182,7 @@ function FileRenderInfo(fileName){
 $scope.renderList = [];
 
 $scope.pushRenderInfo = function(){
-  var fileRenderInfo = new FileRenderInfo($scope.fileToShow);
+  var fileRenderInfo = new FileRenderInfo($scope.fileToShow.file);
   var checkboxList = $scope.checkboxList;
   for(var i=0; i<checkboxList.length;i++){
     if(checkboxList[i].status == true){

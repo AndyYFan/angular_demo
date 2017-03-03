@@ -1,25 +1,27 @@
- <div class="bootstrap">
-                <div class="fixed-table-toolbar"></div>
-                <div class="fixed-table-container">
-                    <div class="fixed-table-header" style="display: none;">
-                        <table></table>
-                    </div>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th ng-repeat="checkbox in checkboxList">
-                                    <span class="glyphicon btn-lg" ng-class=" checkbox.status ? 'glyphicon-check':'glyphicon-unchecked'" ng-click="toggleCheckbox(checkbox)"></span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="row in rows track by $index">
-                                <td ng-repeat="cell in row track by $index">
-                                    {{cell}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+<div class="col-md-8">
+    <div class="bootstrap">
+        <div class="fixed-table-toolbar"></div>
+        <div class="fixed-table-container">
+            <div class="fixed-table-header" style="display: none;">
+                <table></table>
             </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th ng-repeat="checkbox in checkboxList">
+                            <span class="glyphicon btn-lg" ng-class=" checkbox.status ? 'glyphicon-check':'glyphicon-unchecked'" ng-click="toggleCheckbox(checkbox)"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in fileToShow.rows track by $index">
+                        <td ng-repeat="cell in row track by $index">
+                            {{cell}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

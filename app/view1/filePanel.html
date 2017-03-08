@@ -12,7 +12,7 @@
                 <div class="panel-collapse collapse" ng-class="{in: !vm.collapsed}">
                     <div class="panel-body">
                         <ul>
-                            <li class="glyphicon" ng-class="fileToShow.fileName == file.fileName ? 'glyphicon-folder-open':'glyphicon-folder-close'"
+                            <li class="glyphicon" ng-class="fileToShow.file.fileName == file.fileName ? 'glyphicon-folder-open':'glyphicon-folder-close'"
                                 ng-repeat="file in filelist" ng-click="showExcel(file)">
                                 <h4> {{file.fileName}}</h4>
                                 </li>

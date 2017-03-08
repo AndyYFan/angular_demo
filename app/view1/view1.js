@@ -212,12 +212,9 @@ $scope.clearRenderList = function(){
 //   });
 // }
 
-
-
 /**
  * test
  */
 
-
-  
 }
+
